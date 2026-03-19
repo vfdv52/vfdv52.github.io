@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Yifang Wang</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #4a6fa5;
+      --primary-light: #e8f0fb;
+      --accent: #2a9d8f;
+      --text: #333;
+      --text-light: #666;
+      --border: #e0e0e0;
+      --bg: #fafafa;
+      --sidebar-width: 260px;
+    }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+    }
+
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; color: var(--accent); }
+
+    /* ── Layout ── */
+    .layout {
+      display: flex;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      gap: 40px;
+    }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      width: var(--sidebar-width);
+      flex-shrink: 0;
+    }
+
+    .sidebar-sticky {
+      position: sticky;
+      top: 30px;
+    }
+
+    .avatar-wrap {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .avatar {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--border);
+      background: linear-gradient(135deg, #4a6fa5 0%, #2a9d8f 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 56px;
+      font-weight: 700;
+      margin: 0 auto;
+    }
+
+    .sidebar h1 {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+
+    .sidebar .position {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .sidebar-links {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+
+    .sidebar-links li {
+      padding: 4px 0;
+      font-size: 0.88rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-light);
+    }
+
+    .sidebar-links li i {
+      width: 16px;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .social-icons a {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 0.9rem;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .social-icons a:hover {
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+    }
+
+    /* ── Main Content ── */
+    .main { flex: 1; min-width: 0; }
+
+    section { margin-bottom: 44px; }
+
+    .section-title {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--primary);
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 6px;
+      margin-bottom: 20px;
+    }
+
+    /* About */
+    .about-text p { margin-bottom: 10px; font-size: 0.95rem; }
+
+    .interest-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .tag {
+      background: var(--primary-light);
+      color: var(--primary);
+      border-radius: 4px;
+      padding: 3px 10px;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    /* Publications */
+    .pub-list { list-style: none; }
+
+    .pub-item {
+      display: flex;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pub-item:last-child { border-bottom: none; }
+
+    .pub-year {
+      flex-shrink: 0;
+      width: 48px;
+      text-align: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: white;
+      background: var(--primary);
+      border-radius: 4px;
+      height: fit-content;
+      padding: 3px 0;
+      margin-top: 2px;
+    }
+
+    .pub-body { flex: 1; min-width: 0; }
+
+    .pub-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 3px;
+      color: var(--text);
+    }
+
+    .pub-authors {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-bottom: 3px;
+    }
+
+    .pub-authors .me { font-weight: 700; color: var(--text); }
+
+    .pub-venue {
+      font-size: 0.83rem;
+      color: var(--accent);
+      font-style: italic;
+      margin-bottom: 6px;
+    }
+
+    .pub-links { display: flex; gap: 6px; flex-wrap: wrap; }
+
+    .badge {
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .badge-paper {
+      background: #e8f0fb;
+      color: var(--primary);
+      border: 1px solid #b3c9ef;
+    }
+
+    .badge-code {
+      background: #e8f6f4;
+      color: var(--accent);
+      border: 1px solid #a8dbd5;
+    }
+
+    .badge-review {
+      background: #fff3e0;
+      color: #e67e22;
+      border: 1px solid #f5c07a;
+    }
+
+    .badge:hover { opacity: 0.8; text-decoration: none; }
+
+    /* Education */
+    .edu-item { margin-bottom: 18px; }
+
+    .edu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .edu-school {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .edu-date {
+      font-size: 0.82rem;
+      color: var(--text-light);
+    }
+
+    .edu-degree {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      margin-top: 2px;
+    }
+
+    .edu-note {
+      font-size: 0.83rem;
+      color: var(--accent);
+      margin-top: 2px;
+    }
+
+    /* Experience */
+    .exp-item { margin-bottom: 20px; }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .exp-company {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .exp-date {
+      font-size: 0.82rem;
+      color: var(--text-light);
+    }
+
+    .exp-role {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      font-style: italic;
+      margin-bottom: 6px;
+    }
+
+    .exp-list {
+      padding-left: 18px;
+      font-size: 0.88rem;
+    }
+
+    .exp-list li { margin-bottom: 3px; }
+
+    /* Awards */
+    .award-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .award-item:last-child { border-bottom: none; }
+
+    .award-name { font-weight: 600; }
+
+    .award-year {
+      font-size: 0.82rem;
+      color: var(--text-light);
+    }
+
+    /* Skills */
+    .skill-row { margin-bottom: 10px; font-size: 0.88rem; }
+    .skill-label { font-weight: 700; color: var(--text); }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      .layout { flex-direction: column; }
+      .sidebar { width: 100%; }
+      .sidebar-sticky { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- ── Sidebar ── -->
+  <aside class="sidebar">
+    <div class="sidebar-sticky">
+      <div class="avatar-wrap">
+        <div class="avatar">王</div>
+      </div>
+
+      <h1>Yifang Wang</h1>
+      <div class="position">MSc Student @ UCL</div>
+
+      <ul class="sidebar-links">
+        <li><i class="fas fa-university"></i> University College London</li>
+        <li><i class="fas fa-map-marker-alt"></i> London, United Kingdom</li>
+        <li>
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:ucapaci@ucl.ac.uk">ucapaci@ucl.ac.uk</a>
+        </li>
+      </ul>
+
+      <div class="social-icons">
+        <a href="https://github.com/vfdv52" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://orcid.org/0009-0009-4602-5127" title="ORCID" target="_blank"><i class="fab fa-orcid"></i></a>
+        <a href="https://arxiv.org/search/?searchtype=author&query=Yifang+Wang" title="arXiv" target="_blank"><i class="fas fa-file-alt"></i></a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ── Main ── -->
+  <main class="main">
+
+    <!-- About -->
+    <section id="about">
+      <div class="about-text">
+        <p>
+          I am an MSc student in <strong>Scientific and Data Intensive Computing</strong> at
+          <a href="https://www.ucl.ac.uk/" target="_blank">University College London (UCL)</a>.
+          I received my BSc in Data Science and Big Data Technology from
+          <a href="https://www.xjtlu.edu.cn/" target="_blank">Xi'an Jiaotong-Liverpool University (XJTLU)</a>.
+        </p>
+        <p>
+          My research focuses on building robust and practical AI systems at the intersection of
+          computer vision, multi-modal learning, and medical image analysis.
+          I am particularly interested in representation learning under noisy or incomplete data,
+          and the real-world robustness of medical foundation models.
+        </p>
+        <div class="interest-tags">
+          <span class="tag">Artificial Intelligence</span>
+          <span class="tag">Computer Vision</span>
+          <span class="tag">Multi-modal Learning</span>
+          <span class="tag">Medical Image Analysis</span>
+          <span class="tag">Embodied AI</span>
+          <span class="tag">Robustness</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Publications -->
+    <section id="publications">
+      <div class="section-title">Publications</div>
+      <ul class="pub-list">
+
+        <li class="pub-item">
+          <div class="pub-year">2026</div>
+          <div class="pub-body">
+            <div class="pub-title">MedFM-Robust: Benchmarking Robustness of Medical Foundation Models</div>
+            <div class="pub-authors">
+              [author list], <span class="me">Yifang Wang</span>, et al.
+            </div>
+            <div class="pub-venue">MICCAI 2026 (Under Review)</div>
+            <div class="pub-links">
+              <span class="badge badge-review">Under Review</span>
+              <a class="badge badge-code" href="https://anonymous.4open.science/r/MedFM-Robust--CE63" target="_blank">
+                <i class="fas fa-code"></i> Code
+              </a>
+            </div>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <div class="pub-year">2025</div>
+          <div class="pub-body">
+            <div class="pub-title">
+              Multi-modal Learning for Ophthalmic Disease Grading with Incomplete Modalities
+            </div>
+            <div class="pub-authors">
+              Co-first author: <span class="me">Yifang Wang</span>, et al.
+            </div>
+            <div class="pub-venue">MICCAI 2025 (Medical Image Computing and Computer Assisted Intervention)</div>
+            <div class="pub-links">
+              <a class="badge badge-paper" href="https://arxiv.org/abs/2503.05319" target="_blank">
+                <i class="fas fa-file-pdf"></i> arXiv
+              </a>
+            </div>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <div class="pub-year">2025</div>
+          <div class="pub-body">
+            <div class="pub-title">
+              HBLSIR: Information Diffusion Modeling on Inherent Public Opinion Structure,
+              Multidimensional Emotion and Dynamic Susceptibility
+            </div>
+            <div class="pub-authors">
+              [First Author], <span class="me">Yifang Wang</span>, et al.
+            </div>
+            <div class="pub-venue">ICIC 2025 (International Conference on Intelligent Computing)</div>
+          </div>
+        </li>
+
+        <li class="pub-item">
+          <div class="pub-year">2025</div>
+          <div class="pub-body">
+            <div class="pub-title">
+              AuraLLM & SignMST-C: Sign Language Production and Translation with LLM and Multi-stream Transformers
+            </div>
+            <div class="pub-authors">
+              Co-author: <span class="me">Yifang Wang</span>, et al.
+            </div>
+            <div class="pub-venue">KDD 2025 (ACM SIGKDD Conference on Knowledge Discovery and Data Mining)</div>
+          </div>
+        </li>
+
+      </ul>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+      <div class="section-title">Education</div>
+
+      <div class="edu-item">
+        <div class="edu-header">
+          <span class="edu-school">University College London (UCL)</span>
+          <span class="edu-date">Sep 2025 – Sep 2026</span>
+        </div>
+        <div class="edu-degree">MSc Scientific and Data Intensive Computing &nbsp;·&nbsp; London, UK</div>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-header">
+          <span class="edu-school">Xi'an Jiaotong-Liverpool University (XJTLU)</span>
+          <span class="edu-date">Sep 2020 – Jul 2025</span>
+        </div>
+        <div class="edu-degree">BSc Data Science and Big Data Technology &nbsp;·&nbsp; Suzhou, China</div>
+        <div class="edu-note">🏅 University Academic Achievement Award (Top 10%), 2023/2024</div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+      <div class="section-title">Research Experience</div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-company">UCL &amp; University of Surrey</span>
+          <span class="exp-date">Dec 2025 – Mar 2026</span>
+        </div>
+        <div class="exp-role">Research Assistant (MedFM-Robust) · London, UK</div>
+        <ul class="exp-list">
+          <li>Designed a robustness benchmark with 40 perturbation types across 8 imaging modalities for medical foundation models.</li>
+          <li>Evaluated 5 vision-language models (LLaVA-Med, MedGemma, Gemini-2.5-flash, GPT-4o-mini) and 2 segmentation models (MedSAM, SAM-Med2D) under 5 fine-tuning strategies.</li>
+          <li>Revealed that LoRA exhibits nearly 2× the performance degradation of full fine-tuning; medical-specific corruptions dominate segmentation failure.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-company">Mohamed bin Zayed University of Artificial Intelligence (MBZUAI)</span>
+          <span class="exp-date">Dec 2024 – Mar 2025</span>
+        </div>
+        <div class="exp-role">Research Intern · Remote</div>
+        <ul class="exp-list">
+          <li>Co-first authored a MICCAI 2025 paper on multi-modal learning for ophthalmic disease grading with incomplete modalities.</li>
+          <li>Designed EPRL and DiLR modules for enhanced feature selection and modality disentanglement; integrated self-distillation for robustness.</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <!-- Awards -->
+    <section id="awards">
+      <div class="section-title">Awards &amp; Honors</div>
+
+      <div class="award-item">
+        <span class="award-name">🥇 XJTLU Graduation Poster Exhibition — University-level First Prize</span>
+        <span class="award-year">Jul 2025</span>
+      </div>
+      <div class="award-item">
+        <span class="award-name">🥈 National University Students Competition of Intelligent Vehicles — National Second Prize</span>
+        <span class="award-year">2024</span>
+      </div>
+      <div class="award-item">
+        <span class="award-name">🏅 University Academic Achievement Award (Top 10%)</span>
+        <span class="award-year">2023/2024</span>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <div class="section-title">Skills</div>
+      <div class="skill-row"><span class="skill-label">Programming:</span>&nbsp; Python, C++, PyTorch, TensorFlow</div>
+      <div class="skill-row"><span class="skill-label">Research:</span>&nbsp; Representation &amp; Multi-modal Learning · Bayesian &amp; Generative Modeling · Semi-supervised Learning</div>
+      <div class="skill-row"><span class="skill-label">Robotics:</span>&nbsp; ROS, SLAM, LiDAR/IMU/RGB-D sensor fusion</div>
+    </section>
+
+  </main>
+</div>
+
+<footer style="text-align:center; padding: 24px; font-size: 0.8rem; color: #aaa; border-top: 1px solid #eee;">
+  © 2025 Yifang Wang &nbsp;·&nbsp; Last updated March 2026
+</footer>
+
+</body>
+</html>
