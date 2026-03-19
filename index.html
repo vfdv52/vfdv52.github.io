@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet"/>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    , ::before, ::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --primary: #4a6fa5;
@@ -31,7 +31,7 @@
     a { color: var(--primary); text-decoration: none; }
     a:hover { text-decoration: underline; color: var(--accent); }
 
-    /* ── Layout ── */
+    / ── Layout ── /
     .layout {
       display: flex;
       max-width: 1100px;
@@ -40,7 +40,7 @@
       gap: 40px;
     }
 
-    /* ── Sidebar ── */
+    / ── Sidebar ── /
     .sidebar {
       width: var(--sidebar-width);
       flex-shrink: 0;
@@ -128,7 +128,7 @@
       text-decoration: none;
     }
 
-    /* ── Main Content ── */
+    / ── Main Content ── /
     .main { flex: 1; min-width: 0; }
 
     section { margin-bottom: 44px; }
@@ -145,7 +145,7 @@
       margin-bottom: 20px;
     }
 
-    /* About */
+    / About /
     .about-text p { margin-bottom: 10px; font-size: 0.95rem; }
 
     .interest-tags {
@@ -164,7 +164,7 @@
       font-weight: 600;
     }
 
-    /* Publications */
+    / Publications /
     .pub-list { list-style: none; }
 
     .pub-item {
@@ -244,7 +244,7 @@
 
     .badge:hover { opacity: 0.8; text-decoration: none; }
 
-    /* Education */
+    / Education /
     .edu-item { margin-bottom: 18px; }
 
     .edu-header {
@@ -277,7 +277,7 @@
       margin-top: 2px;
     }
 
-    /* Experience */
+    / Experience /
     .exp-item { margin-bottom: 20px; }
 
     .exp-header {
@@ -311,7 +311,7 @@
 
     .exp-list li { margin-bottom: 3px; }
 
-    /* Awards */
+    / Awards /
     .award-item {
       display: flex;
       justify-content: space-between;
@@ -332,11 +332,11 @@
       color: var(--text-light);
     }
 
-    /* Skills */
+    / Skills /
     .skill-row { margin-bottom: 10px; font-size: 0.88rem; }
     .skill-label { font-weight: 700; color: var(--text); }
 
-    /* Responsive */
+    / Responsive /
     @media (max-width: 700px) {
       .layout { flex-direction: column; }
       .sidebar { width: 100%; }
@@ -399,7 +399,7 @@
           <span class="tag">Multi-modal Learning</span>
           <span class="tag">Medical Image Analysis</span>
           <span class="tag">Embodied AI</span>
-          <span class="tag">Robustness</span>
+          
         </div>
       </div>
     </section>
@@ -414,7 +414,7 @@
           <div class="pub-body">
             <div class="pub-title">DPFT: A Framework for Decomposed Probabilistic Forecasting with Transformers</div>
             <div class="pub-authors">
-              <span class="me">Yifang Wang</span>*, Boliang Yuan*, Mengjie Mao, Xinyun Zhang, Yiheng Zhong, Xinkun Wang, Senwei Liang
+              <span class="me">Yifang Wang</span>, Boliang Yuan, Mengjie Mao, Xinyun Zhang, Yiheng Zhong, Xinkun Wang, Senwei Liang
             </div>
             <div class="pub-venue">IEEE SMC 2026 (Under Review) &nbsp;·&nbsp; UCL, Imperial College London, CMU, Brown University</div>
             <div class="pub-links">
@@ -476,9 +476,9 @@
           <div class="pub-body">
             <div class="pub-title">Robust Multimodal Learning for Ophthalmic Disease Grading via Disentangled Representation</div>
             <div class="pub-authors">
-              <span class="me">Yifang Wang</span>*, Xinkun Wang*, Senwei Liang*, Feilong Tang†, Chengzhi Liu, Ming Hu, Chao Hu, Junjun He, Zongyuan Ge, Imran Razzak
+              <span class="me">Yifang Wang</span>, Xinkun Wang, Senwei Liang, Feilong Tang, Chengzhi Liu, Ming Hu, Chao Hu, Junjun He, Zongyuan Ge, Imran Razzak
             </div>
-            <div class="pub-venue">MICCAI 2025 (Medical Image Computing and Computer Assisted Intervention)</div>
+            <div class="pub-venue">MICCAI 2025</div>
             <div class="pub-links">
               <a class="badge badge-paper" href="https://arxiv.org/abs/2503.05319" target="_blank"><i class="fas fa-file-pdf"></i> arXiv</a>
             </div>
@@ -490,9 +490,9 @@
           <div class="pub-body">
             <div class="pub-title">Beyond Words: AuraLLM and SignMST-C for Sign Language Production and Bidirectional Accessibility</div>
             <div class="pub-authors">
-              Yulong Li*, Yuxuan Zhang*, Feilong Tang, Ming Hu, Zhixiang Lu, Haochen Xue, Jianghao Wu, Mian Zhou, Kang Dang, Chong Li, <span class="me">Yifang Wang</span>, Imran Razzak†, Jionglong Su†
+              Yulong Li, Yuxuan Zhang, Feilong Tang, Ming Hu, Zhixiang Lu, Haochen Xue, Jianghao Wu, Mian Zhou, Kang Dang, Chong Li, <span class="me">Yifang Wang</span>, Imran Razzak, Jionglong Su
             </div>
-            <div class="pub-venue">KDD 2025 (ACM SIGKDD Conference on Knowledge Discovery and Data Mining)</div>
+            <div class="pub-venue">KDD 2025</div>
             <div class="pub-links">
               <a class="badge badge-paper" href="https://arxiv.org/abs/2501.00765" target="_blank"><i class="fas fa-file-pdf"></i> arXiv</a>
             </div>
